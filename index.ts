@@ -4,9 +4,15 @@ const interval$ = new Observable<number>((subscriber) => {
   let counter = 1;
 
   //emit a value every 2 seconds
-  setInterval(() => {
+  const myInterval = setInterval(() => {
+    console.log('Emitted:', counter);
     subscriber.next(counter++);
   }, 2000);
+
+  //Teardown logic
+  return () => {
+    clearInterval(myInterval);
+  };
 });
 
 const subscription = interval$.subscribe({
