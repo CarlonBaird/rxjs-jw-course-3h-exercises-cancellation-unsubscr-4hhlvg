@@ -9,7 +9,12 @@ const interval$ = new Observable<number>((subscriber) => {
   }, 2000);
 });
 
-interval$.subscribe({
+const subscription = interval$.subscribe({
   next: (value) => console.log(value),
-  complete: () => console.log('Unsubscribe'),
 });
+
+//Unsubscribe after 7 seconds
+setTimeout(() => {
+  console.log('Unsubscribe');
+  subscription.unsubscribe();
+}, 7000);
