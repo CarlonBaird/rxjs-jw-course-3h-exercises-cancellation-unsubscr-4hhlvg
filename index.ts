@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 const interval$ = new Observable<number>((subscriber) => {
   let counter = 1;
 
-  //emit a value every 2 seconds
+  //Emit a value every 2 seconds
   const myInterval = setInterval(() => {
     console.log('Emitted:', counter);
     subscriber.next(counter++);
