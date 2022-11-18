@@ -9,7 +9,7 @@ const interval$ = new Observable<number>((subscriber) => {
     subscriber.next(counter++);
   }, 2000);
 
-  //Teardown logic
+  //Teardown logic: used to avoid memory leaks or leaving the setInterval() code running
   return () => {
     clearInterval(myInterval);
   };
