@@ -5,8 +5,7 @@ const interval$ = new Observable<number>((subscriber) => {
 
   //emit a value every 2 seconds
   setInterval(() => {
-    if (counter > 3) subscriber.unsubscribe();
-    else subscriber.next(counter++);
+    subscriber.next(counter++);
   }, 2000);
 });
 
